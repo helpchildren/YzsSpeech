@@ -18,7 +18,18 @@ android {
 
     buildTypes {
         release {
+            ndk {
+                abiFilters = ["armeabi", "armeabi-v7a"]
+            }
             minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            ndk {
+                abiFilters = ["armeabi", "armeabi-v7a"]
+            }
+            minifyEnabled false  /*是否开启混淆*/
+            shrinkResources false  /*是否打开资源压缩*/
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -35,4 +46,5 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation project(path: ':YzsSpeech')
 }
